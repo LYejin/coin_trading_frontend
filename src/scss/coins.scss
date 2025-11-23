@@ -1,0 +1,525 @@
+:root {
+  --bg-main: #f5f7fb;
+  --bg-card: #ffffff;
+  --border-subtle: #e2e5ec;
+  --text-main: #222;
+  --text-muted: #8b8f9b;
+  --primary: #07b0bd;
+  --primary-soft: #e0f6f7;
+  --danger: #ff4d4f;
+  --shadow-card: 0 8px 20px rgba(15, 23, 42, 0.08);
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+  --transition-fast: 0.15s ease-out;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Noto Sans KR", sans-serif;
+}
+
+/* 전체 레이아웃 */
+.exchange-root {
+  min-height: 100vh;
+  background: #e3e9f4;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  gap: 16px;
+
+  /* 왼쪽 사이드바 */
+  .side-left {
+    width: 72px;
+    background: var(--bg-card);
+    border-radius: 24px;
+    box-shadow: var(--shadow-card);
+    padding: 18px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+
+    &__logo-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    &__logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__menu,
+    &__bottom {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+  }
+
+  /* 아이콘 버튼 */
+  .icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transition-fast), transform var(--transition-fast);
+
+    &.active,
+    &:hover {
+      background: #f1f5f9;
+      transform: translateY(-1px);
+    }
+
+    &__icon {
+      font-size: 18px;
+    }
+  }
+
+  .fab-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: var(--primary);
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+  }
+
+  .user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: #0f172a;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* 메인 */
+  .exchange-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .main-header {
+      background: var(--bg-card);
+      border-radius: 24px;
+      box-shadow: var(--shadow-card);
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &__title {
+        margin: 0;
+        font-size: 26px;
+        font-weight: 700;
+      }
+
+      &__date {
+        margin: 2px 0 0;
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+    }
+
+    .main-body {
+      flex: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) 360px;
+      gap: 16px;
+    }
+  }
+
+  /* 공통 카드 */
+  .card {
+    background: var(--bg-card);
+    border-radius: 20px;
+    box-shadow: var(--shadow-card);
+    padding: 18px 20px;
+    box-sizing: border-box;
+  }
+
+  /* 가운데 영역 */
+  .center-area {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    /* 차트 카드 */
+    .chart-card {
+      &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 12px;
+      }
+
+      &__coin {
+        font-size: 14px;
+        color: var(--text-muted);
+      }
+
+      &__price {
+        font-size: 24px;
+        font-weight: 700;
+        margin-top: 4px;
+      }
+
+      &__time {
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      .chart-placeholder {
+        width: 100%;
+        height: 260px;
+        border-radius: 16px;
+        background: #f8fafc;
+        border: 1px dashed #cbd5e1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted);
+        font-size: 13px;
+      }
+    }
+
+    /* 하단 3컬럼 */
+    .bottom-row {
+      display: grid;
+      grid-template-columns: 1.1fr 1.4fr 0.9fr;
+      gap: 14px;
+    }
+  }
+
+  /* 탭 */
+  .tab-header {
+    display: flex;
+    border-radius: var(--radius-pill);
+    background: #f1f5f9;
+    padding: 3px;
+    margin-bottom: 14px;
+
+    &__btn {
+      flex: 1;
+      border-radius: var(--radius-pill);
+      border: none;
+      background: transparent;
+      font-size: 13px;
+      padding: 6px 0;
+      cursor: pointer;
+      transition: background var(--transition-fast), color var(--transition-fast);
+
+      &.active {
+        background: var(--primary);
+        color: #fff;
+      }
+    }
+  }
+
+  /* 미체결/체결 */
+  .orders-card {
+    &__table {
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+      overflow: hidden;
+      font-size: 12px;
+    }
+
+    &__row {
+      display: grid;
+      grid-template-columns: 1.5fr 0.8fr 1fr;
+      padding: 6px 10px;
+
+      &--head {
+        background: #f9fafb;
+        font-weight: 600;
+        color: #4b5563;
+      }
+
+      &:not(.orders-card__row--head):nth-child(odd) {
+        background: #ffffff;
+      }
+    }
+
+    &__footer {
+      margin-top: 12px;
+      text-align: right;
+    }
+  }
+
+  /* 버튼 */
+  .btn {
+    border-radius: var(--radius-pill);
+    border: none;
+    font-size: 13px;
+    padding: 8px 18px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background var(--transition-fast), color var(--transition-fast),
+      box-shadow var(--transition-fast), transform var(--transition-fast);
+
+    &-primary {
+      background: var(--primary);
+      color: #fff;
+      width: 100%;
+
+      &:hover {
+        box-shadow: 0 12px 20px rgba(7, 176, 189, 0.35);
+        transform: translateY(-1px);
+      }
+    }
+
+    &-outline {
+      background: #fff;
+      border: 1px solid #cbd5e1;
+    }
+  }
+
+  .btn-square {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    background: #f8fafc;
+    cursor: pointer;
+  }
+
+  /* 매수 카드 */
+  .trade-card {
+    &__body {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .field-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+
+      label {
+        font-size: 13px;
+        color: var(--text-main);
+      }
+
+      input[type="text"] {
+        flex: 1;
+        height: 34px;
+        border-radius: 10px;
+        border: 1px solid #e2e8f0;
+        padding: 0 10px;
+        font-size: 13px;
+        box-sizing: border-box;
+      }
+
+      &__value {
+        font-weight: 600;
+      }
+
+      &__input-combo {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      &__suffix {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-right: 4px;
+      }
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+
+      label {
+        font-size: 12px;
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+    }
+
+    .percent-buttons {
+      display: flex;
+      gap: 6px;
+
+      button {
+        flex: 1;
+        height: 30px;
+        border-radius: var(--radius-pill);
+        border: 1px solid #e2e8f0;
+        background: #f8fafc;
+        font-size: 11px;
+        cursor: pointer;
+      }
+    }
+
+    &__hint {
+      margin: 4px 0 0;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    &__footer {
+      margin-top: 10px;
+    }
+  }
+
+  /* 보유 주식 카드 */
+  .holding-card {
+    &__title {
+      margin: 0 0 12px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    &__row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      margin-bottom: 6px;
+
+      span:first-child {
+        color: var(--text-muted);
+      }
+
+      &--profit {
+        span:last-child {
+          color: var(--danger);
+        }
+      }
+    }
+  }
+
+  /* 오른쪽 코인 리스트 */
+  .side-right {
+    display: flex;
+    flex-direction: column;
+
+    .coin-list-card__search {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 12px;
+      background: #f1f5f9;
+      margin-bottom: 12px;
+
+      &-icon {
+        font-size: 14px;
+      }
+
+      input {
+        border: none;
+        outline: none;
+        background: transparent;
+        font-size: 13px;
+        flex: 1;
+      }
+    }
+
+    .coin-list {
+      list-style: none;
+      padding: 0;
+      margin: 4px 0 0;
+      max-height: 480px;
+      overflow-y: auto;
+
+      &__item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 10px;
+        border-radius: 10px;
+        font-size: 13px;
+        cursor: pointer;
+        transition: background var(--transition-fast);
+
+        &:hover {
+          background: #f1f5f9;
+        }
+
+        &--active {
+          background: var(--primary);
+          color: #fff;
+        }
+
+        .coin-list__star {
+          font-size: 14px;
+        }
+
+        .coin-list__name {
+          flex: 1;
+        }
+      }
+    }
+  }
+}
+
+/* 반응형 */
+@media (max-width: 1280px) {
+  .main-body {
+    grid-template-columns: minmax(0, 1.4fr) 320px;
+  }
+
+  .bottom-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 980px) {
+  .exchange-root {
+    flex-direction: column;
+
+    .side-left {
+      flex-direction: row;
+      width: auto;
+      height: 72px;
+
+      &__menu,
+      &__bottom {
+        flex-direction: row;
+      }
+    }
+
+    .main-body {
+      grid-template-columns: 1fr;
+    }
+
+    .side-right {
+      order: -1;
+    }
+  }
+}
