@@ -1,0 +1,78 @@
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal-box {
+    background: #fff;
+    width: 300px;
+    padding: 28px 20px 22px;
+    border-radius: 16px;
+    text-align: center;
+    animation: fadeIn 0.2s ease-out;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.modal-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0 auto 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+.modal-icon.success {
+    background: #e7f8ef;
+    color: #1aa96a;
+}
+
+.modal-icon.error {
+    background: #fdeaea;
+    color: #d64545;
+}
+
+.modal-message {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+
+.modal-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    background: #4a80f5;
+    color: #fff;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.modal-btn:hover {
+    background: #3a6be0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
