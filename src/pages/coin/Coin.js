@@ -38,7 +38,7 @@ const Coin = () => {
               <TradeCard />
 
               {/* 매수/매도 폼 */}
-              <OrdersCard market="KRW-CKB" />
+              <OrdersCard market={JSON.parse(localStorage.getItem("selectedMarket")) || "KRW-CKB"} />
 
               {/* 보유 주식 */}
               <HoldingCard />

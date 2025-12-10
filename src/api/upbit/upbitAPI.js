@@ -7,3 +7,12 @@ export const ticker = async (data) => {
         { markets: data }
     );
 }
+
+export const pair = async (data) => {
+    return await Util.callApi(
+        "get",
+        "https://api.upbit.com/v1/market/all",
+        { isDetails: true }
+    );
+}
+

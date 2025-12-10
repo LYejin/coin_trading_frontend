@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo, useRef } from "react";
 import searchIcon from "../../assets/icons/search.png";
-import Util from "../../Util/Util";
+import { pair } from "../../api/upbit/upbitAPI";
 
 const CoinList = () => {
   
@@ -16,11 +16,7 @@ const CoinList = () => {
   useEffect(() => {
     (async () => {
       try {
-        const markets = await Util.callApi(
-          "get",
-          "https://api.upbit.com/v1/market/all",
-          { isDetails: true }
-        );
+        const markets = await pair();
 
         // KRW 마켓만 사용
         const baseMarkets = (markets || []).filter((m) =>
@@ -88,10 +84,8 @@ const CoinList = () => {
 
   
   const handleSearchIconClick = () => {
-    if (searchTerm) {
-      setSearchTerm("");
-    }
-    inputRef.current?.focus();
+    // 선택 조회 한 martket 값
+    localStorage.setItem("selectedMarket", JSON.stringify(selectedMarket));
   };
 
   return (

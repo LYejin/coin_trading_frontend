@@ -1,4 +1,36 @@
+import React,{useEffect, useState} from "react";
+import Util from "../../Util/Util";
+
 const HoldingCard = () => {
+
+    // 보유 코인
+    const [coin, setCoin] = useState("");
+    // 총 금액
+    const [totalValue, setTotalValue] = useState(0); 
+    // 투자 원금
+    const [investAmount, setInvestAmount] = useState(0);
+    // 수익금 
+    const [profit, setProfit] = useState(0);
+    // 수익률
+    const [profitRate, setProfitRate] = useState(0);
+    
+    useEffect(()=>{
+        
+        const assets = async () => {
+            
+            const res = await Util.callApi(
+                "post"
+                , `${process.env.REACT_APP_API_URL}/coin/assets`,
+            )
+
+            console.log('res',res);
+
+        }
+
+        assets();
+    },[]);
+
+
 
     return (
         <section className="card holding-card">
